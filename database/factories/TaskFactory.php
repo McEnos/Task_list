@@ -1,6 +1,6 @@
 <?php 
 
-user Faker\Generator as Faker;
+use Faker\Generator as Faker;
 use App\Models\Task;
 $factory->define(Task::class,function(Faker $faker){
     return [

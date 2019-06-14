@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Task;
-use Illuminate\Database\Seeder;
+use App\Models\User;
+
 class TasksTableSeeder extends Seeder
 {
     /**
