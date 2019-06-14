@@ -24,4 +24,12 @@ class TaskController extends Controller
         session()->flash('status','Task Created');
         return redirect('/tasks');
     }
+    public function update(Task $task)
+    {
+        $this->authorize('complete',$task);
+        $task->is_completed = true;
+        $task->save();
+        session()->flash('status','Task Completed');
+        return redirect('/tasks');
+    }
 }
