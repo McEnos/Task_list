@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Auth::user()->tasks()->orderBy('is_completed')->orderByDesc('created_at')->paginate(5);
+        $tasks = Auth::user()->tasks()->orderBy('is_complete')->orderByDesc('created_at')->paginate(5);
         return view('tasks',compact('tasks'));
     }
     public function store(Request $request)
@@ -19,7 +19,7 @@ class TaskController extends Controller
         ]);
         Auth::user()->tasks()->create([
             'title' => $data['title'],
-            'is_completed' => false,
+            'is_complete' => false,
         ]);
         session()->flash('status','Task Created');
         return redirect('/tasks');
@@ -27,7 +27,7 @@ class TaskController extends Controller
     public function update(Task $task)
     {
         $this->authorize('complete',$task);
-        $task->is_completed = true;
+        $task->is_complete = true;
         $task->save();
         session()->flash('status','Task Completed');
         return redirect('/tasks');
